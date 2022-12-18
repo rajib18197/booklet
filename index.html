@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOOK STORE APPLICATION</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script type="module" defer src="./js/app.js"></script>
+  </head>
+  <body>
+    <!-- <h1 class="heading-primary">My BookList</h1> -->
+    <section class="container">
+      <div class="content">
+        <div class="register-book">
+          <button class="btn btn--register">Put on record</button>
+
+          <form class="form hidden">
+            <div class="form__group">
+              <select name="" id="type" class="form__input form__input--type">
+                <option value="Programming">Programming</option>
+                <option value="Self-Help">Self-Help</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Science">Science</option>
+                <option value="English">English</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <input
+                type="text"
+                name="bookName"
+                id="bookName"
+                class="form__input form__input--bookname"
+                placeholder="Book Name"
+              />
+            </div>
+            <div class="form__group">
+              <input
+                type="text"
+                name="bookISBN"
+                id="bookISBN"
+                class="form__input form__input--pages"
+                placeholder="pages/read"
+              />
+            </div>
+            <div class="form__group">
+              <input
+                type="text"
+                name="bookAuthor"
+                id="bookAuthor"
+                class="form__input form__input--author"
+                placeholder="Author Name"
+              />
+            </div>
+            <div class="form__group">
+              <input
+                type="number"
+                name="bookISBN"
+                id="bookISBN"
+                class="form__input form__input--finishedCount"
+                placeholder="Total Read"
+              />
+            </div>
+            <div class="form__group">
+              <input
+                type="number"
+                name="bookISBN"
+                id="bookISBN"
+                class="form__input form__input--price"
+                placeholder="Price"
+              />
+            </div>
+            <div class="form__group">
+              <div class="form__radio-group">
+                <input
+                  type="radio"
+                  name="status"
+                  id="option1"
+                  value="not start"
+                  class="form__radio-input"
+                />
+                <label for="option1" class="form__radio-label">
+                  <span class="form__radio-button">&nbsp;</span>
+                  Not Started
+                </label>
+              </div>
+              <div class="form__radio-group">
+                <input
+                  type="radio"
+                  name="status"
+                  id="option2"
+                  value="in-progress"
+                  class="form__radio-input"
+                />
+                <label for="option2" class="form__radio-label">
+                  <span class="form__radio-button">&nbsp;</span>
+                  In Progress</label
+                >
+              </div>
+              <div class="form__radio-group">
+                <input
+                  type="radio"
+                  name="status"
+                  id="option3"
+                  value="finished"
+                  class="form__radio-input"
+                />
+                <label for="option3" class="form__radio-label">
+                  <span class="form__radio-button">&nbsp;</span>
+                  Finished
+                </label>
+              </div>
+            </div>
+            <input type="submit" value="REGISTER BOOK" class="btn form__btn" />
+          </form>
+
+          <ul class="previews"></ul>
+        </div>
+
+        <div class="books">
+          <div class="message">
+            <div>
+              <ion-icon name="happy-outline" class="icon"></ion-icon>
+            </div>
+            <p>Start by selecting a type or creating a type and have fun!</p>
+          </div>
+
+          <!--  -->
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+
+<!--TODO: Table View Later will be added -->
+<!-- <div class="books__information" data-type=${books.type}>
+  <div class="books__header">
+    <h2 class="heading-secondary">${books.type}</h2>
+    <p>Finished Books</p>
+  </div>
+  
+  <table>
+    <thead>
+      <tr>
+        <th class="booklists__text booklists__header--name">Name</th>
+        <th class="booklists__text booklists__header--name">
+          Author
+        </th>
+        <th class="booklists__text booklists__header--name">
+          Status
+        </th>
+        <th class="booklists__text booklists__header--name">
+          Completed
+        </th>
+        <th class="booklists__text booklists__header--name">
+          Pages/Read
+        </th>
+        <th class="booklists__text booklists__header--name">
+          ReadBook
+        </th>
+        <th class="booklists__text booklists__header--name">
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody class="booklists__books">
+    ${books.lists
+      .map((book, i) => {
+        return `
+          <tr class="booklist booklist--${books.type}" data-id=${book.id}>
+            <td class="booklist__name">${book.bookName}</td>
+            <td class="booklist__author">${book.authorName}</td>
+            <td class="booklist__status">${book.status}</td>
+            <td class="booklist__completed">
+              <span>${book.percentage}%</span>
+            </td>
+            <td class="booklist__pages">${book.totalPages}/${book.readPages}</td>
+            <td class="booklist__count">${book.finishedCount}</td>
+            <td>
+              <div class="booklist__actions">
+                <button class="booklist__btn booklist__btn--update">
+                  <ion-icon
+                    class="booklist__btn--icon"
+                    name="create-outline"
+                  ></ion-icon>
+                </button>
+                <button class="booklist__btn booklist__btn--delete">
+                  <ion-icon
+                    class="booklist__btn--icon"
+                    name="close-circle-outline"
+                  ></ion-icon>
+                </button>
+                <button class="booklist__btn booklist__btn--info">
+                  <ion-icon
+                    class="booklist__btn--icon"
+                    name="information-circle-outline"
+                  ></ion-icon>
+                </button>
+                <button class="booklist__btn booklist__btn--check">
+                  <ion-icon
+                    class="booklist__btn--icon"
+                    name="checkmark-circle-outline"
+                  ></ion-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+          `;
+      })
+      .join("")}   
+    </tbody>
+  </table>
+</div>  
+<div class="btn-actions">
+  <button class="btn btn--clear">Clear All Books</button>
+  <button class="btn btn--completed">Completed</button>
+  <button class="btn btn--incompleted">InCompleted</button>
+</div> -->
